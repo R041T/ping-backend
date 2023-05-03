@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users{
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid 
+  name String 
+  email String @unique
+  photoUrl String
+  rooms Rooms[]
+  senderdetails Messages[] @relation("senderdetail_fk")
+  participants Participants[]
+}
+
+model Rooms{
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  isPrivate Boolean
+  starter String @db.Uuid
+  isStartedChat Boolean @default(false)
+  messages Messages[]
+  participants Participants[]
+  userdetails Users @relation(fields: [starter], references: [id])
+}
+
+model Participants{
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userid String @db.Uuid
+  roomid String @db.Uuid
+  users Users @relation(fields: [userid], references: [id])
+  rooms Rooms @relation(fields: [roomid], references: [id])
+}
+
+
+model Messages{
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  roomid String @db.Uuid
+  sender String @db.Uuid
+  message String @db.Text
+  sendTime DateTime @db.Timestamp()
+  readReceipt Int @default(0)
+  senderdetails Users @relation("senderdetail_fk",fields: [sender], references: [id])
+  rooms Rooms @relation(fields: [roomid], references: [id])
+}

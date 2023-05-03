@@ -1,0 +1,49 @@
+{
+  "name": "chat-app-server",
+  "version": "1.0.0",
+  "description": "A chat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "NODE_ENV=production node public/app.js",
+    "dev": "NODE_ENV=development tsc-watch --onSuccess \"nodemon ./src/app.ts\"",
+    "build": "tsc -b"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R041T/Chat-App.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Rohit Mahesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/R041T/Chat-App/issues"
+  },
+  "homepage": "https://github.com/R041T/Chat-App#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.0",
+    "prisma": "^4.8.0",
+    "ts-node": "^10.9.1",
+    "tsc-watch": "^5.0.3",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.8.1",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "expres": "^0.0.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
+}
