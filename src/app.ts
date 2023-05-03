@@ -46,9 +46,7 @@ const main = async() =>{
 
     InitRoutes(app,db,io);
     app.get('/',(req:any,res:any)=>res.status(200).json({hello:'world'}));
-
     
-    //app.listen(process.env.PORT,()=>console.log('Server Running')); // Express Port
     httpServer.listen(process.env.SOCKET_PORT); // Websockets Port
 
 }
