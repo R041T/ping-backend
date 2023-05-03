@@ -24,4 +24,4 @@ artifacts:
     - public/**/*
     - package.json
     - package-lock.json
-    - prisma
+    - prisma/**/*
