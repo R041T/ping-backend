@@ -25,4 +25,3 @@ artifacts:
     - package.json
     - package-lock.json
     - prisma/**/*
-    - node_modules/**/*
